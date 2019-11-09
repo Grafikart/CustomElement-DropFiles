@@ -1,0 +1,51 @@
+{
+  "name": "dropinput",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "source": "components/drop-files/index.jsx",
+  "scripts": {
+    "test": "HEADLESS=false NODE_ENV=test jest",
+    "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
+    "build": "preact build --no-prerender --clean --template src/index.ejs --service-worker false",
+    "serve": "npm run build && npx http-server ./build -p 4444",
+    "dev": "preact watch --template src/index.ejs",
+    "dist": "microbundle --entry src/components/drop-files/index.jsx"
+  },
+  "keywords": [],
+  "author": "Zouhir <zouhir@zouhir.org>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "@types/expect-puppeteer": "^3.3.3",
+    "@types/jest": "^24.0.22",
+    "@types/jest-environment-puppeteer": "^4.3.1",
+    "@types/puppeteer": "^1.20.2",
+    "babel-loader": "^8.0.6",
+    "eslint": "^4.5.0",
+    "http-server": "^0.11.1",
+    "identity-obj-proxy": "^3.0.0",
+    "if-env": "^1.0.0",
+    "jest": "^24.9.0",
+    "jest-puppeteer": "^4.3.0",
+    "microbundle": "^0.6.0",
+    "node-sass": "^4.5.3",
+    "preact-cli": "^2.0.2",
+    "preact-widget-scripts": "^0.6.0",
+    "puppeteer": "^2.0.0",
+    "sass-loader": "^6.0.6"
+  },
+  "dependencies": {
+    "@babel/core": "^7.7.2",
+    "preact": "^10.0.4",
+    "preact-custom-element": "^3.0.0",
+    "preact-habitat": "^3.3.0",
+    "preact-render-to-string": "^5.1.1",
+    "preact-router": "^3.1.0",
+    "pretty-bytes": "^5.3.0",
+    "react-flip-toolkit": "^7.0.6"
+  }
+}
