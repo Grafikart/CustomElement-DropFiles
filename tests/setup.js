@@ -19,17 +19,3 @@ global.expect.extend({
     }
   },
 });
-
-global.it = async ( name, func ) => {
-  return await test( name, async () => {
-    try {
-      await func();
-    } catch ( error ) {
-      if ( process.env.E2E_DEBUG ) {
-        console.log( error );
-        await jestPuppeteer.debug();
-      }
-      throw error;
-    }
-  }, process.env.E2E_DEBUG ? 60000 : null );
-}

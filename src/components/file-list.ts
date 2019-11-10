@@ -8,6 +8,9 @@ interface Props {
   onDelete: deleteCallback
 }
 
+/**
+ * This component handle the view for the file listing
+ */
 export default class FileListComponent {
 
   private container: HTMLDivElement
@@ -24,15 +27,18 @@ export default class FileListComponent {
     return this.container
   }
 
+  /**
+   * Update the DOM
+   */
   update (fileList: FileList): void {
     const [added, removed] = diffFiles(this.oldFiles, fileList)
+    this.flip.read(Array.from(this.fileElements.values()))
     added.forEach(file => {
       const fileComponent = FileComponent({file, onDelete: this.onDelete})
       this.fileElements.set(file, fileComponent)
       this.container.appendChild(fileComponent)
     })
     if (removed.length > 0) {
-      this.flip.read(Array.from(this.fileElements.values()))
       const removeElements = removed.map(file => {
         const element = this.fileElements.get(file)
         this.fileElements.delete(file)

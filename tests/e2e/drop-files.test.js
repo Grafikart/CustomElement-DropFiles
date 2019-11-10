@@ -9,7 +9,7 @@ const filePath = function (filename) {
 
 describe('Drop Files', () => {
   beforeEach(async () => {
-    await page.goto('http://localhost:4444')
+    await page.goto('http://localhost:8080')
   })
 
   it('should display the label', async () => {

@@ -6,9 +6,7 @@
     "target": "es6",
     "allowJs": true,
     "alwaysStrict": true,
-    "jsx": "react",
     "lib": ["dom", "es2015", "es2017"],
-    "jsxFactory": "h",
     "noEmitHelpers": true,
     "importHelpers": true,
     "esModuleInterop": true

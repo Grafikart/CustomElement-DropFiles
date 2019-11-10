@@ -1,13 +1,10 @@
 module.exports = {
   presets: [
     ['@babel/preset-env', {
-      "targets": { node: "12" }
+      "targets": [
+        { node: "12" },
+        "> 1%, not dead"
+      ]
     }],
-  ],
-  plugins: [
-    ['@babel/plugin-transform-react-jsx', {
-      'pragma': 'h',
-      'pragmaFrag': 'Fragment'
-    }]
   ]
 }

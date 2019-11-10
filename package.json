@@ -1,24 +1,26 @@
 {
-  "name": "dropinput",
+  "name": "drop-files-element",
   "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
-  "module": "dist/index.m.js",
-  "source": "components/drop-files/index.jsx",
+  "module": "dist/drop-files-element.mjs",
+  "unpkg": "dist/drop-files-element.umd.js",
   "scripts": {
     "test": "NODE_ENV=test jest",
+    "clean": "rm -rf dist",
     "build": "webpack && cp index.html dist/index.html",
-    "serve": "npx http-server ./dist -p 4444",
+    "build:dist": "npm run build:umd && npm run build:umd:min",
+    "build:umd": "FILE_NAME=drop-file-elements webpack",
+    "build:umd:min": "NODE_ENV=production npm run build:umd",
+    "serve": "npx http-server ./dist -p 8080",
     "dev": "webpack-dev-server",
-    "dist": "microbundle --entry src/components/drop-files/index.jsx"
+    "dist": "microbundle -i src/index.ts -o dist --cwd demo"
   },
   "keywords": [],
   "author": "Zouhir <zouhir@zouhir.org>",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.7.2",
-    "@babel/plugin-transform-react-jsx": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@types/expect-puppeteer": "^3.3.3",
     "@types/jest": "^24.0.22",
