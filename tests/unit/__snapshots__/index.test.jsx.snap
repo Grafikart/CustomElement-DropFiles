@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`DropFiles Snapshot should render DropFiles with content 1`] = `"<div class=\\"drop-files\\"><input type=\\"file\\" multiple style=\\"display:none;\\" /><div class=\\"drop-files__files\\"></div><div class=\\"drop-files__explanations\\"><strong>Drop files here or click to upload.</strong></div><input type=\\"file\\" multiple class=\\"drop-files__fake\\" /></div>"`;

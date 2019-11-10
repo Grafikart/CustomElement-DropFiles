@@ -17,7 +17,11 @@ module.exports = {
           typeCheck: true
         }
       },
-      */
+       */
+      {
+        test: /\.svg$/,
+        use: 'svg-inline-loader'
+      },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',

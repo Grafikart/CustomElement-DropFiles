@@ -7,7 +7,7 @@ const filePath = function (filename) {
   return path.join(__dirname, 'fixtures', filename)
 }
 
-describe('Google', () => {
+describe('Drop Files', () => {
   beforeAll(async () => {
     await page.goto('http://localhost:4444')
   })
@@ -21,8 +21,7 @@ describe('Google', () => {
   })
 
   it('should show file uploaded', async () => {
-    await expect(page).toUploadFile(FAKE_INPUT, filePath('blank.pdf')
-    )
+    await expect(page).toUploadFile(FAKE_INPUT, filePath('blank.pdf'))
     await expect(page).toMatch('blank.pdf')
   })
 

@@ -8,9 +8,8 @@
   "source": "components/drop-files/index.jsx",
   "scripts": {
     "test": "HEADLESS=false NODE_ENV=test jest",
-    "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "preact build --no-prerender --clean --template src/index.ejs --service-worker false",
-    "serve": "npm run build && npx http-server ./build -p 4444",
+    "build": "webpack && cp index.html dist/index.html",
+    "serve": "npm run build && npx http-server ./dist -p 4444",
     "dev": "webpack-dev-server",
     "dist": "microbundle --entry src/components/drop-files/index.jsx"
   },
@@ -34,8 +33,11 @@
     "microbundle": "^0.6.0",
     "puppeteer": "^2.0.0",
     "style-loader": "^1.0.0",
+    "svg-inline-loader": "^0.8.0",
+    "ts-jest": "^24.1.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.2",
+    "url-loader": "^2.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
