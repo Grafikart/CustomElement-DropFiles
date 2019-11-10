@@ -1,6 +1,6 @@
 {
-  "name": "drop-files-element",
-  "version": "0.1.0",
+  "name": "@grafikart/drop-files-element",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/drop-files-element.js",
   "module": "dist/drop-files-element.js",
