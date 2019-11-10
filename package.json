@@ -2,53 +2,44 @@
   "name": "drop-files-element",
   "version": "0.1.0",
   "description": "",
-  "main": "dist/index.js",
-  "module": "dist/drop-files-element.mjs",
-  "unpkg": "dist/drop-files-element.umd.js",
+  "main": "dist/drop-files-element.js",
+  "module": "dist/drop-files-element.js",
+  "type": "module",
+  "prepublish": "npm run build",
   "scripts": {
     "test": "NODE_ENV=test jest",
     "clean": "rm -rf dist",
-    "build": "webpack && cp index.html dist/index.html",
-    "build:dist": "npm run build:umd && npm run build:umd:min",
-    "build:umd": "FILE_NAME=drop-file-elements webpack",
-    "build:umd:min": "NODE_ENV=production npm run build:umd",
-    "serve": "npx http-server ./dist -p 8080",
-    "dev": "webpack-dev-server",
-    "dist": "rollup -c rollup.config.js"
+    "serve": "http-server ./ -p 8080",
+    "dev": "rollup -c rollup.config.js --watch",
+    "build": "rollup -c rollup.config.js"
   },
+  "files": [
+    "/dist"
+  ],
   "keywords": [],
-  "author": "Zouhir <zouhir@zouhir.org>",
+  "author": "Jonathan Boyer <contact@grafikart.fr>",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1",
     "@types/expect-puppeteer": "^3.3.3",
     "@types/jest": "^24.0.22",
     "@types/jest-environment-puppeteer": "^4.3.1",
     "@types/puppeteer": "^1.20.2",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.2.0",
     "http-server": "^0.11.1",
-    "if-env": "^1.0.0",
     "jest": "^24.9.0",
     "jest-puppeteer": "^4.3.0",
-    "microbundle": "^0.6.0",
     "puppeteer": "^2.0.0",
+    "rollup": "^1.26.4",
     "rollup-plugin-inline-svg": "^1.1.1",
+    "rollup-plugin-livereload": "^1.0.4",
     "rollup-plugin-postcss": "^2.0.3",
-    "rollup-plugin-typescript": "^1.0.1",
-    "style-loader": "^1.0.0",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-typescript2": "^0.25.2",
     "svg-inline-loader": "^0.8.0",
     "ts-jest": "^24.1.0",
     "ts-loader": "^6.2.1",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2",
-    "url-loader": "^2.2.0",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "web-component-analyzer": "^0.1.20"
   },
-  "dependencies": {
-    "rollup": "^1.26.4"
-  }
+  "dependencies": {}
 }

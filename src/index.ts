@@ -12,6 +12,13 @@ type ChangeEvent = {
   currentTarget: HTMLInputElement;
 }
 
+/**
+ * @element drop-files
+ * @attr {String} label - The label used as a bold text for the drop area
+ * @attr {String} help - Help text used as a secondary text for the drop area
+ * @cssprop --drop-border-color
+ * @cssprop --drop-border-color-hover
+ */
 class DropFilesElement extends HTMLInputElement {
 
   private fileList: FileListComponent
