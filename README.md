@@ -27,7 +27,7 @@ import '@grafikart/drop-files-element'
 ### With unpkg.com
 
 ```html
-<script type="module" src="//unpkg.com/@grafikart/drop-files-element@1.0.1"></script>
+<script type="module" src="//unpkg.com/@grafikart/drop-files-element"></script>
 ```
 
 Then use the custom element in your html using `is="drop-files`.
