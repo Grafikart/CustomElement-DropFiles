@@ -8,9 +8,31 @@ The goal of this module is to add user interaction on a file input with multiple
 
 ## Usage
 
+### With npm
+
+Install the package using npm or yarn
+
+```bash
+npm i @grafikart/drop-files-element
+# or
+yarn add @grafikart/drop-files-element
+```
+
+Then import it in your script
+
+```js
+import '@grafikart/drop-files-element'
+```
+
+### With unpkg.com
+
 ```html
 <script type="module" src="//unpkg.com/@grafikart/drop-files-element@1.0.1"></script>
+```
 
+Then use the custom element in your html using `is="drop-files`.
+
+```html
 <input
         type="file"
         multiple
@@ -19,23 +41,24 @@ The goal of this module is to add user interaction on a file input with multiple
         help="Upload files here and they won't be sent immediately"
         is="drop-files"
 />
-``` 
+```
 
-## Attributes
+## Customization
+
+### Attributes
 
 | Attribute | Type     | Description                                          |
 |-----------|----------|------------------------------------------------------|
 | `label`   | `string` | The label used as a bold text for the drop area      |
 | `help`   | `string` | Help text used as a secondary text for the drop area  |
 
-## CSS Custom Properties
+### CSS Custom Properties
 
 | Property                    |
 |-----------------------------|
 | `--drop-border-color`       |
 | `--drop-border-color-hover` |
 
+### HTML Structure
 
-## Todo
-
-- [ ] Publish on npm 
+This component doesn't use shadow dom so you can customize the style using CSS and overwrite the style already included inside this custom element.
