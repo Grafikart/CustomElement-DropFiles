@@ -1,10 +1,14 @@
 # Custom Element drop file
 
+[![Build Status](https://travis-ci.org/Grafikart/CustomElement-DropFiles.svg?branch=master)](https://travis-ci.org/Grafikart/CustomElement-DropFiles)
+
 The goal of this module is to add user interaction on a file input with multiple files as a progressive enhancement (the form still works if this JavaScript is disabled).
 
 ## Usage
 
 ```html
+<script type="module" src="//unpkg.com/@grafikart/drop-files-element@1.0.1"></script>
+
 <input
         type="file"
         multiple

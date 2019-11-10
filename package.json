@@ -1,17 +1,17 @@
 {
   "name": "@grafikart/drop-files-element",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/drop-files-element.js",
   "module": "dist/drop-files-element.js",
   "type": "module",
-  "prepublish": "npm run build",
   "scripts": {
     "test": "NODE_ENV=test jest",
     "clean": "rm -rf dist",
     "serve": "http-server ./ -p 8080",
     "dev": "rollup -c rollup.config.js --watch",
-    "build": "rollup -c rollup.config.js"
+    "build": "rollup -c rollup.config.js",
+    "prepublish": "npm run build"
   },
   "files": [
     "/dist"
