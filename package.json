@@ -1,6 +1,6 @@
 {
   "name": "@grafikart/drop-files-element",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/drop-files-element.js",
   "module": "dist/drop-files-element.js",
@@ -13,6 +13,14 @@
     "build": "rollup -c rollup.config.js",
     "prepublish": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grafikart/CustomElement-DropFiles.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Grafikart/CustomElement-DropFiles/issues"
+  },
+  "homepage": "https://github.com/Grafikart/CustomElement-DropFiles",
   "files": [
     "/dist"
   ],
