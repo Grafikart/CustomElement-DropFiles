@@ -101,3 +101,5 @@ class DropFilesElement extends HTMLInputElement {
 }
 
 customElements.define('drop-files', DropFilesElement, { extends: 'input' });
+
+export default DropFilesElement
