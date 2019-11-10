@@ -20,7 +20,9 @@ export default {
     }),
     postcss(),
     inlineSvg(),
-    isDev ? serve() : null,
+    isDev ? serve({
+      port: '8080',
+    }) : null,
     isDev ? livereload() : null
   ]
 }

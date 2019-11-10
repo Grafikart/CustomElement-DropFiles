@@ -4,6 +4,8 @@
 
 The goal of this module is to add user interaction on a file input with multiple files as a progressive enhancement (the form still works if this JavaScript is disabled).
 
+![](preview.jpg)
+
 ## Usage
 
 ```html
