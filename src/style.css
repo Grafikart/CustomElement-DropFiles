@@ -1,0 +1,166 @@
+:root {
+	--drop-border-color: #EBEBF3;
+	--drop-border-color-hover: #68caf3;
+}
+.drop-files {
+	border: 2px dashed var(--drop-border-color);
+	border-radius: 3px;
+	position: relative;
+	transition: border .3s;
+	padding: 10px 5px;
+}
+
+.drop-files.is-hovered {
+	border-color:var(--drop-border-color-hover);
+}
+
+.drop-files__explanations {
+	padding: 40px 0;
+	text-align: center;
+}
+
+.drop-files__fake{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.drop-files.is-hovered input:last-child {
+	z-index: 3;
+}
+
+.drop-files__files {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.drop-files__file {
+	position: relative;
+	max-width: 100px;
+	width: 100%;
+	flex: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 5px;
+	z-index: 2;
+}
+
+.drop-files__file em {
+	opacity: .75;
+	font-size: .9em;
+}
+
+.drop-files__file svg {
+	width: 50px;
+	height: 50px;
+}
+
+.drop-files__file img {
+	width: 100%;
+	height: 50px;
+	object-fit: cover;
+}
+
+.drop-files__fileinfo {
+	margin-top: .5rem;
+	display: flex;
+	width: 100%;
+}
+
+.drop-files__fileinfo span {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.drop-files__fileinfo em {
+	flex: none;
+	margin-left: auto;
+	transition: opacity .3s;
+}
+
+.drop-files__file:hover .drop-files__fileinfo em {
+	opacity: 0;
+}
+
+.drop-files__explanations strong {
+	display: block;
+	font-weight: 500;
+	font-size: 1.2rem;
+}
+
+.drop-files__explanations em {
+	display: block;
+	margin-top: 5px;
+	opacity: .75;
+	font-weight: 400;
+	font-size: .9rem;
+	font-style: normal;
+}
+
+.drop-files.has-files .drop-files__explanations {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	background-color: rgba(255,255,255,0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	pointer-events: none;
+	transition: .3s;
+}
+
+.drop-files.has-files.is-hovered .drop-files__explanations {
+	opacity: 1;
+	z-index: 3;
+}
+
+.drop-files__delete {
+	color: #E94962;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 25px!important;
+	height: 25px!important;
+	transition: opacity .3s;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.drop-files__file:hover .drop-files__delete  {
+	opacity: 1;
+}
+
+@keyframes dropFilesEnter {
+	from { transform: translateY(20px); opacity: 0; }
+	to { transform: translateY(0px); opacity: 1; }
+}
+
+.drop-files__file.is-appearing{
+	animation: dropFilesEnter .35s forwards cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+@keyframes dropFilesLeave {
+	from {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+}
+
+.drop-files__file.is-leaving{
+	animation: dropFilesLeave .35s forwards cubic-bezier(0.47, 0, 0.745, 0.715);
+}

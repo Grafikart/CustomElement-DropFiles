@@ -1,6 +1,5 @@
 import {h, createRef} from 'preact'
-import {useEffect, useState} from 'preact/hooks'
-import "./style.css"
+import {useEffect, useState, useRef} from 'preact/hooks'
 import {arrayToFilelist} from '../../helpers/file-list'
 import FileList from './file-list.jsx'
 
@@ -24,12 +23,12 @@ function mergeWithouDuplicates (files1, files2) {
   return files
 }
 
-export default function Counter({name, label = "Drop files here or click to upload.", help = null}) {
+export default function Counter({name, label = "Drop files here or click to upload.", help = null, input}) {
   const {isDraggedOver, onDragOver, onDragLeave} = useDragOver()
   const [files, setFiles] = useState([])
-  const originalInput = createRef()
   const classes = ['drop-files']
   const hasFiles = files.length > 0
+  const container = useRef(null)
   if (isDraggedOver) classes.push('is-hovered')
   if (hasFiles) classes.push('has-files')
 
@@ -42,12 +41,16 @@ export default function Counter({name, label = "Drop files here or click to uplo
   }
 
   useEffect(() => {
-    originalInput.current.files = arrayToFilelist(files)
+    input.files = arrayToFilelist(files)
   }, [files])
 
+  useEffect(() => {
+    input.style.display = "none"
+    container.current.appendChild(input)
+  }, [input])
+
   return (
-    <div className={classes.join(' ')} onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDragLeave}>
-      <input ref={originalInput} type="file" name={name} multiple style="display:none;"/>
+    <div className={classes.join(' ')} onDragOver={onDragOver} ref={container} onDragLeave={onDragLeave} onDrop={onDragLeave}>
       <FileList files={files} onDelete={deleteFile}/>
       <div className="drop-files__explanations">
         <strong>{label}</strong>
