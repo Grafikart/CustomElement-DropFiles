@@ -1,5 +1,4 @@
-import File from './drop-files/file'
-import { removeWithAnimation, strToDom } from '../helpers/dom'
+import { strToDom } from '../helpers/dom'
 import FileComponent from './file'
 import { diffFiles } from '../helpers/files'
 import { deleteCallback } from '../interfaces'

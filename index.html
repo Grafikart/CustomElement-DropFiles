@@ -2,24 +2,77 @@
 <html>
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Demo Widget DropFiles</title>
   <script src="/bundle.js" defer></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 10px;
+      font-size: 14px;
+    }
+    #a {
+      padding: 0 10px;
+      border: 2px solid lightblue;
+    }
+    #b {
+      padding: 0 10px;
+      border: 2px solid lightgreen;
+    }
+    button {
+      font-size: 14px;
+      background-color: #5867dd;
+      border: none;
+      color: #fff;
+      padding: .65em 1em;
+      line-height: 1.5;
+      border-radius: .25em;
+      cursor: pointer;
+    }
+  </style>
+
 </head>
+
 
 <body>
 
-<form action="http://localhost:8000" method="post" enctype="multipart/form-data">
-  <input
-          type="file"
-          name="files[]"
-          label="Drop files here or click to upload."
-          help="Seuls les fichiers .doc, .docx, .pdf et .odt peuvent être déposé"
-          is="drop-files"
-  />
-  <button type="submit">Envoyer</button>
-</form>
+<div id="a">
+  <h2>#a</h2>
+  <form action="http://localhost:8000" method="post" enctype="multipart/form-data">
+    <input
+            type="file"
+            multiple
+            name="files[]"
+            label="Drop files here or click to upload."
+            help="Upload files here and they won't be send immediately"
+            is="drop-files"
+    />
+    <p>
+      <button type="submit">Submit</button>
+    </p>
+  </form>
+</div>
+
+<p>
+  <button id="move">Move input</button>
+  <button id="remove">Remove input</button>
+</p>
+
+<div id="b">
+  <h2>#b</h2>
+</div>
+<script type="text/javascript">
+  const $ = document.querySelector.bind(document)
+  $('#move').addEventListener('click', function (e) {
+    e.preventDefault()
+    $('#b').appendChild($('input[name="files[]"]'))
+  })
+  $('#remove').addEventListener('click', function (e) {
+    e.preventDefault()
+    $('input[name="files[]"]').remove()
+  })
+</script>
 </body>
 
 </html>

@@ -7,9 +7,9 @@
   "module": "dist/index.m.js",
   "source": "components/drop-files/index.jsx",
   "scripts": {
-    "test": "HEADLESS=false NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest",
     "build": "webpack && cp index.html dist/index.html",
-    "serve": "npm run build && npx http-server ./dist -p 4444",
+    "serve": "npx http-server ./dist -p 4444",
     "dev": "webpack-dev-server",
     "dist": "microbundle --entry src/components/drop-files/index.jsx"
   },

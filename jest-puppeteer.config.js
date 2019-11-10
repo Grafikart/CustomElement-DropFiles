@@ -1,11 +1,6 @@
 module.exports = {
   launch: {
-    devtools: true,
+    devtools: false,
     headless: process.env.HEADLESS !== 'false',
   },
-  // server: {
-  //   command: 'npm run serve',
-  //   port: 4444,
-  //   usedPortAction: 'kill'
-  // },
 }

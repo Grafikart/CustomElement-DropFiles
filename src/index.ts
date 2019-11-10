@@ -14,14 +14,33 @@ type ChangeEvent = {
 
 class DropFilesElement extends HTMLInputElement {
 
-  private connected = false
   private fileList: FileListComponent
   private container: HTMLDivElement
+  private ignoreCallbacks = false
 
   connectedCallback () {
-    if (this.connected === true) return
-    this.connected = true
-    this.onFirstConnect()
+    if (this.ignoreCallbacks) return
+    this.ignoreCallbacks = true
+    const div = this.render()
+    this.fileList = new FileListComponent()
+    this.insertAdjacentElement('afterend', div)
+    this.style.display = 'none'
+    div.appendChild(this)
+    div.appendChild(this.fileList.render({onDelete: this.deleteFile.bind(this)}))
+    // Listeners
+    div.addEventListener('dragover', () => div.classList.add('is-hovered'))
+    div.addEventListener('dragleave', () => div.classList.remove('is-hovered'))
+    div.addEventListener('drop', () => div.classList.remove('is-hovered'))
+    this.container = div
+    this.ignoreCallbacks = false
+    if (this.files.length > 0) {
+      this.onFilesUpdate()
+    }
+  }
+
+  disconnectedCallback () {
+    if (this.ignoreCallbacks) return
+    this.container.remove()
   }
 
   private getAttributes (): Props {
@@ -34,20 +53,7 @@ class DropFilesElement extends HTMLInputElement {
   /**
    * Generates the HTML structure needed for this custom element to Work
    */
-  private onFirstConnect () {
-    const div = this.render()
-    this.fileList = new FileListComponent()
-    this.insertAdjacentElement('afterend', div)
-    this.removeAttribute('is')
-    this.style.display = 'none'
-    div.appendChild(this)
-    div.appendChild(this.fileList.render({onDelete: this.deleteFile.bind(this)}))
-    // Listeners
-    div.addEventListener('dragover', () => div.classList.add('is-hovered'))
-    div.addEventListener('dragleave', () => div.classList.remove('is-hovered'))
-    div.addEventListener('drop', () => div.classList.remove('is-hovered'))
-    this.container = div
-  }
+
 
   /**
    * Render the base structure for the component
@@ -61,7 +67,7 @@ class DropFilesElement extends HTMLInputElement {
       </div>
       <input type="file" multiple class="drop-files__fake"/>
     </div>`).firstElementChild
-    dom.querySelector('.drop-files__fake').addEventListener('change', this.onFilesChange.bind(this))
+    dom.querySelector('.drop-files__fake').addEventListener('change', this.onNewFiles.bind(this))
     return dom
   }
 
@@ -76,7 +82,7 @@ class DropFilesElement extends HTMLInputElement {
   /**
    * Event triggered when new files are selected
    */
-  private onFilesChange (e: ChangeEvent): void {
+  private onNewFiles (e: ChangeEvent): void {
     this.files = mergeFileLists(this.files, e.currentTarget.files)
     this.onFilesUpdate()
   }

@@ -1,4 +1,3 @@
-import FileExtension from './drop-files/icons/file-extension'
 import { humanSize } from '../helpers/sizes'
 import { strToDom } from '../helpers/dom'
 import { renderExtension } from '../icons/index'
