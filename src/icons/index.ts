@@ -1,15 +1,15 @@
-import pdf from './pdf.svg'
-import doc from './doc.svg'
-import { strToDom } from '../helpers/dom'
+import pdf from "./pdf.svg"
+import doc from "./doc.svg"
+import { strToDom } from "../helpers/dom"
 
 type IconList = {
   [k: string]: string
 }
 
 const icons: IconList = {
-  'doc': doc,
-  'docx': doc,
-  'pdf': pdf
+  doc: doc,
+  docx: doc,
+  pdf: pdf
 }
 
 /*
@@ -18,16 +18,23 @@ Element implicitly has an 'any' type because expression of type 'string' can't b
 
  */
 
-export function renderExtension (file: File): Element {
-  const ext = file.name.split('.').slice(-1)[0].toLowerCase()
+export function renderExtension(file: File): Element {
+  const ext = file.name
+    .split(".")
+    .slice(-1)[0]
+    .toLowerCase()
   if (icons[ext] !== undefined) {
     return <Element>strToDom(icons[ext]).firstChild
   }
   const img = <HTMLImageElement>strToDom(`<img src=""/>`).firstChild
   const reader = new FileReader()
-  reader.addEventListener("load", () => {
-    img.setAttribute('src', reader.result.toString())
-  }, false)
+  reader.addEventListener(
+    "load",
+    () => {
+      img.setAttribute("src", reader.result.toString())
+    },
+    false
+  )
   reader.readAsDataURL(file)
   return img
 }

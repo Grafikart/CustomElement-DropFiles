@@ -1,5 +1,6 @@
 # Custom Element drop file
 
+[![npm](https://img.shields.io/npm/v/@grafikart/drop-files-element.svg)](http://npm.im/@grafikart/drop-files-element)
 [![Build Status](https://travis-ci.org/Grafikart/CustomElement-DropFiles.svg?branch=master)](https://travis-ci.org/Grafikart/CustomElement-DropFiles)
 
 The goal of this module is to add user interaction on a file input with multiple files as a progressive enhancement (the form still works if this JavaScript is disabled).

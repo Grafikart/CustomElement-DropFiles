@@ -1,14 +1,17 @@
-import { humanSize } from '../helpers/sizes'
-import { strToDom } from '../helpers/dom'
-import { renderExtension } from '../icons/index'
-import { deleteCallback } from '../interfaces'
+import { humanSize } from "../helpers/sizes"
+import { strToDom } from "../helpers/dom"
+import { renderExtension } from "../icons/index"
+import { deleteCallback } from "../interfaces"
 
 interface Props {
-  file: File,
+  file: File
   onDelete: deleteCallback
 }
 
-export default function FileComponent ({ file, onDelete }: Props): HTMLDivElement {
+export default function FileComponent({
+  file,
+  onDelete
+}: Props): HTMLDivElement {
   const icon = renderExtension(file)
   const dom = <HTMLDivElement>strToDom(`<div class="drop-files__file">
     <div class="drop-files__fileinfo">
@@ -23,7 +26,7 @@ export default function FileComponent ({ file, onDelete }: Props): HTMLDivElemen
       </svg>
     </div>`).firstChild
   dom.insertBefore(icon, dom.firstChild)
-  dom.querySelector('.drop-files__delete').addEventListener('click', e => {
+  dom.querySelector(".drop-files__delete").addEventListener("click", e => {
     e.preventDefault()
     onDelete(file)
   })

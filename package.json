@@ -7,6 +7,7 @@
   "type": "module",
   "scripts": {
     "test": "NODE_ENV=test jest",
+    "lint": "npx prettier --write '**/*.ts'",
     "clean": "rm -rf dist",
     "serve": "http-server ./ -p 8080",
     "dev": "rollup -c rollup.config.js --watch",
@@ -35,6 +36,7 @@
     "http-server": "^0.11.1",
     "jest": "^24.9.0",
     "jest-puppeteer": "^4.3.0",
+    "prettier": "^1.19.1",
     "puppeteer": "^2.0.0",
     "rollup": "^1.26.4",
     "rollup-plugin-inline-svg": "^1.1.1",
