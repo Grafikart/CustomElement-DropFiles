@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "stable"
 before_script:
-  - yarn run serve &
+  - yarn run serve
   - yarn run build
 script:
   - yarn run test
