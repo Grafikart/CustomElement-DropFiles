@@ -44,6 +44,14 @@ Then use the custom element in your html using `is="drop-files`.
 />
 ```
 
+### Safari
+
+Unfortunately safari doesn't support Custom build-in elements and you have to polyfill this feature at the moment using [@ungap polyfill](https://github.com/ungap/custom-elements-builtin)
+
+```html
+<script src="https://unpkg.com/@ungap/custom-elements-builtin"></script>
+```
+
 ## Customization
 
 ### Attributes

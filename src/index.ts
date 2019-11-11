@@ -38,7 +38,10 @@ class DropFilesElement extends HTMLInputElement {
     div.addEventListener('dragleave', () => div.classList.remove('is-hovered'))
     div.addEventListener('drop', () => div.classList.remove('is-hovered'))
     this.container = div
-    this.ignoreCallbacks = false
+    // Safari need this timer
+    window.requestAnimationFrame(() => {
+      this.ignoreCallbacks = false
+    })
     if (this.files.length > 0) {
       this.onFilesUpdate()
     }
