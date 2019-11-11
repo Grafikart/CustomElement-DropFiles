@@ -6,13 +6,13 @@
   "module": "dist/drop-files-element.js",
   "type": "module",
   "scripts": {
-    "test": "NODE_ENV=test jest",
+    "test": "jest",
     "pretty": "prettier --write '**/*.ts'",
     "lint": "tsc --noEmit && eslint 'src/**/*.{js,ts,tsx}' --fix",
-    "serve": "http-server ./ -p 8080",
+    "serve": "forever start ./node_modules/http-server/bin/http-server ./ -p 8080",
     "dev": "rollup -c rollup.config.js --watch",
     "build": "rollup -c rollup.config.js",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "rm -rf dist && npm run build"
   },
   "repository": {
     "type": "git",
@@ -49,6 +49,7 @@
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "forever": "^1.0.0",
     "http-server": "^0.11.1",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
