@@ -12,7 +12,7 @@
     "serve": "http-server ./ -p 8080",
     "dev": "rollup -c rollup.config.js --watch",
     "build": "rollup -c rollup.config.js",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
