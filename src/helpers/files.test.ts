@@ -8,14 +8,11 @@ const fakeFile = (filename: string): File => {
 }
 
 const fakeFileList = (...files: File[]): FileList => {
-  return {
-    length: files.length,
-    item: (index: number): File => files[index],
-  }
+  return Object.assign(files, { item: (k: number) => files[k] })
 }
 
-describe.skip('helpers/files.test', () => {
-  describe('arrayToFileList', () => {
+describe('helpers/files.test', () => {
+  describe.skip('arrayToFileList', () => {
     it('should convert an array', () => {
       const f1 = new File([''], 'file1.pdf', { type: 'application/pdf' })
       const f2 = new File([''], 'file2.pdf', { type: 'application/pdf' })
@@ -29,7 +26,6 @@ describe.skip('helpers/files.test', () => {
       const f1 = fakeFile('1.pdf')
       const f2 = fakeFile('2.pdf')
       const [added, removed] = diffFiles(fakeFileList(), fakeFileList(f1, f2))
-      console.log(added, removed)
       expect(added).toHaveLength(2)
       expect(removed).toHaveLength(0)
     })
@@ -42,7 +38,7 @@ describe.skip('helpers/files.test', () => {
       expect(removed).toHaveLength(0)
     })
 
-    it('should detect added Elements', () => {
+    it('should detect removed Elements', () => {
       const f1 = fakeFile('1.pdf')
       const f2 = fakeFile('2.pdf')
       const f3 = fakeFile('3.pdf')
