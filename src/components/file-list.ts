@@ -1,8 +1,8 @@
-import { strToDom } from "../helpers/dom"
-import FileComponent from "./file"
-import { diffFiles } from "../helpers/files"
-import { deleteCallback } from "../interfaces"
-import Flip from "../helpers/flip"
+import { strToDom } from '../helpers/dom'
+import FileComponent from './file'
+import { diffFiles } from '../helpers/files'
+import { deleteCallback } from '../interfaces'
+import Flip from '../helpers/flip'
 
 interface Props {
   onDelete: deleteCallback
@@ -22,9 +22,7 @@ export default class FileListComponent {
     this.flip = new Flip()
     this.onDelete = onDelete
     this.fileElements = new Map()
-    this.container = <HTMLDivElement>(
-      strToDom(`<div class="drop-files__files"></div>`).firstChild
-    )
+    this.container = strToDom(`<div class="drop-files__files"></div>`).firstChild as HTMLDivElement
     return this.container
   }
 

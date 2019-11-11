@@ -3,7 +3,7 @@ export function strToDom(str: string): DocumentFragment {
 }
 
 export function removeWithAnimation(el: Element) {
-  el.classList.add("is-leaving")
+  el.classList.add('is-leaving')
   window.setTimeout(() => {
     el.remove()
   }, 900)

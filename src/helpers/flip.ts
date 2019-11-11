@@ -6,7 +6,7 @@ type FlipArgument = Element[]
 export default class Flip {
   private duration: number
   private positions: Map<Element, DOMRect>
-  private timingFunction = "cubic-bezier(0.5, 0, 0, 0.5)"
+  private timingFunction = 'cubic-bezier(0.5, 0, 0, 0.5)'
 
   constructor() {
     this.duration = 450
@@ -18,7 +18,7 @@ export default class Flip {
    */
   read(elements: FlipArgument) {
     elements.forEach(element => {
-      this.positions.set(element, <DOMRect>element.getBoundingClientRect())
+      this.positions.set(element, element.getBoundingClientRect() as DOMRect)
     })
   }
 
@@ -34,19 +34,19 @@ export default class Flip {
           [
             {
               transform: `translate(0, 10px)`,
-              opacity: 0
+              opacity: 0,
             },
             {
-              transform: "none",
-              opacity: 1
-            }
+              transform: 'none',
+              opacity: 1,
+            },
           ],
           {
             duration: this.duration,
             easing: this.timingFunction,
-            fill: "both",
-            delay: 50 * k
-          }
+            fill: 'both',
+            delay: 50 * k,
+          },
         )
         return
       }
@@ -58,17 +58,17 @@ export default class Flip {
       element.animate(
         [
           {
-            transform: `translate(${deltaX}px, ${deltaY}px) scale(${deltaW}, ${deltaH})`
+            transform: `translate(${deltaX}px, ${deltaY}px) scale(${deltaW}, ${deltaH})`,
           },
           {
-            transform: "none"
-          }
+            transform: 'none',
+          },
         ],
         {
           duration: this.duration,
           easing: this.timingFunction,
-          fill: "both"
-        }
+          fill: 'both',
+        },
       )
     })
   }
@@ -91,18 +91,18 @@ export default class Flip {
         [
           {
             transform: `translate(${deltaX}px, ${deltaY}px)`,
-            opacity: 1
+            opacity: 1,
           },
           {
             transform: `translate(${deltaX}px, ${deltaY - 10}px)`,
-            opacity: 0
-          }
+            opacity: 0,
+          },
         ],
         {
           duration: this.duration,
           easing: this.timingFunction,
-          fill: "both"
-        }
+          fill: 'both',
+        },
       )
       window.setTimeout(function() {
         element.parentNode.removeChild(element)
