@@ -1,14 +1,14 @@
 {
   "name": "@grafikart/drop-files-element",
-  "version": "1.0.2",
-  "description": "",
+  "version": "1.0.3",
+  "description": "Customized built-in element to add user interactions on a file input with multiple files as a progressive enhancement.",
   "main": "dist/drop-files-element.js",
   "module": "dist/drop-files-element.js",
   "type": "module",
   "scripts": {
     "test": "NODE_ENV=test jest",
     "pretty": "prettier --write '**/*.ts'",
-    "lint": "tsc --noEmit && eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
+    "lint": "tsc --noEmit && eslint 'src/**/*.{js,ts,tsx}' --fix",
     "serve": "http-server ./ -p 8080",
     "dev": "rollup -c rollup.config.js --watch",
     "build": "rollup -c rollup.config.js",
@@ -62,14 +62,10 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-typescript2": "^0.25.2",
-    "svg-inline-loader": "^0.8.0",
     "ts-jest": "^24.1.0",
     "ts-loader": "^6.2.1",
     "tslib": "^1.10.0",
-    "typescript": "^3.7.2",
-    "web-component-analyzer": "^0.1.20"
+    "typescript": "^3.7.2"
   },
-  "dependencies": {
-    "@babel/types": "^7.7.2"
-  }
+  "dependencies": {}
 }

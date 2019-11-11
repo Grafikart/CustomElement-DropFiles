@@ -16,7 +16,7 @@ export default class Flip {
   /**
    * Mémorise la position de nos éléments
    */
-  read(elements: FlipArgument) {
+  read(elements: FlipArgument): void {
     elements.forEach(element => {
       this.positions.set(element, element.getBoundingClientRect() as DOMRect)
     })
@@ -25,7 +25,7 @@ export default class Flip {
   /**
    * Anime les éléments vers leur nouvelle position
    */
-  play(elements: FlipArgument) {
+  play(elements: FlipArgument): void {
     elements.forEach((element, k) => {
       const newPosition = element.getBoundingClientRect()
       const oldPosition = this.positions.get(element)
@@ -78,7 +78,7 @@ export default class Flip {
    *
    * @param {Element[]} elements
    */
-  remove(elements: FlipArgument) {
+  remove(elements: FlipArgument): void {
     // We move the elements to remove at the end
     elements.forEach(element => element.parentNode.appendChild(element))
     // We animate the removal of the element

@@ -24,7 +24,7 @@ class DropFilesElement extends HTMLInputElement {
   private container: HTMLDivElement
   private ignoreCallbacks = false
 
-  connectedCallback() {
+  connectedCallback(): void {
     if (this.ignoreCallbacks) return
     this.ignoreCallbacks = true
     const div = this.render()
@@ -47,7 +47,7 @@ class DropFilesElement extends HTMLInputElement {
     }
   }
 
-  disconnectedCallback() {
+  disconnectedCallback(): void {
     if (this.ignoreCallbacks) return
     this.container.remove()
   }
@@ -78,7 +78,7 @@ class DropFilesElement extends HTMLInputElement {
   /**
    * Remove a file from the FileList
    */
-  private deleteFile(file: File) {
+  private deleteFile(file: File): void {
     this.files = removeFile(this.files, file)
     this.onFilesUpdate()
   }
