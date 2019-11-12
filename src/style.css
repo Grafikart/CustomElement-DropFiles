@@ -71,6 +71,7 @@
 .drop-files__fileinfo {
   margin-top: .5rem;
   display: flex;
+  align-items: flex-end;
   width: 100%;
 }
 
@@ -131,8 +132,10 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 25px !important;
-  height: 25px !important;
+  padding-left: 5px;
+  padding-top: 5px;
+  width: 19px !important;
+  height: 19px !important;
   transition: opacity .3s;
   opacity: 0;
   cursor: pointer;

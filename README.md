@@ -72,3 +72,10 @@ Unfortunately safari doesn't support Custom build-in elements and you have to po
 ### HTML Structure
 
 This component doesn't use shadow dom so you can customize the style using CSS and overwrite the style already included inside this custom element.
+
+## Changelog
+
+**1.0.4**
+
+- Better error handling
+- Improved style for the delete button

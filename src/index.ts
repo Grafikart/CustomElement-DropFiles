@@ -104,6 +104,14 @@ class DropFilesElement extends HTMLInputElement {
   }
 }
 
-customElements.define('drop-files', DropFilesElement, { extends: 'input' })
+try {
+  customElements.define('drop-files', DropFilesElement, { extends: 'input' })
+} catch (e) {
+  if (e instanceof DOMException) {
+    console.error('DOMException : ' + e.message)
+  } else {
+    throw e
+  }
+}
 
 export default DropFilesElement
