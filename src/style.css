@@ -128,14 +128,15 @@
 }
 
 .drop-files__delete {
+  box-sizing: border-box;
   color: #E94962;
   position: absolute;
   bottom: 0;
   right: 0;
   padding-left: 5px;
   padding-top: 5px;
-  width: 19px !important;
-  height: 19px !important;
+  width: 25px !important;
+  height: 25px !important;
   transition: opacity .3s;
   opacity: 0;
   cursor: pointer;
