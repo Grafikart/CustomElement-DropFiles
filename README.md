@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/Grafikart/CustomElement-DropFiles.svg?branch=master)](https://travis-ci.org/Grafikart/CustomElement-DropFiles)
 [![Build Status](https://github.com/Grafikart/CustomElement-DropFiles/workflows/Test/badge.svg)](https://github.com/Grafikart/CustomElement-DropFiles/actions)
 
-The goal of this module is to add user interaction on a file input with multiple files as a progressive enhancement (the form still works if this JavaScript is disabled)
+The goal of this module is to add user interaction on a file input with multiple files as a progressive enhancement (the form still works if this JavaScript is disabled). [Live demo](https://codesandbox.io/s/customelement-dropfiles-demo-9iudwlate-night-9iudw?fontsize=14)
 
 ![](preview.jpg)
 
@@ -74,6 +74,10 @@ Unfortunately safari doesn't support Custom build-in elements and you have to po
 This component doesn't use shadow dom so you can customize the style using CSS and overwrite the style already included inside this custom element.
 
 ## Changelog
+
+**1.0.5**
+
+- Fix style when box-sizing is set to border-box 
 
 **1.0.4**
 
