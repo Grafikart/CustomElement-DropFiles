@@ -64,4 +64,18 @@ describe('Drop Files', () => {
     await expect(page).toMatchElement('#b input')
     await expect('#b ' + FILE).toExist(1)
   })
+
+  it('should update label automatically', async () => {
+    await page.evaluate(ORIGINAL_INPUT => {
+      document.querySelector(ORIGINAL_INPUT).setAttribute('label', 'Hello world')
+    }, ORIGINAL_INPUT)
+    await expect(page).toMatch('Hello world')
+  })
+
+  it('should update help automatically', async () => {
+    await page.evaluate(ORIGINAL_INPUT => {
+      document.querySelector(ORIGINAL_INPUT).setAttribute('help', 'azjejaoze')
+    }, ORIGINAL_INPUT)
+    await expect(page).toMatch('azjejaoze')
+  })
 })

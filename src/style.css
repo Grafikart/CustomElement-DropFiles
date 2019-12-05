@@ -106,6 +106,10 @@
   font-style: normal;
 }
 
+.drop-files__explanations em:empty {
+  display: none;
+}
+
 .drop-files.has-files .drop-files__explanations {
   position: absolute;
   top: 0;

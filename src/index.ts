@@ -24,6 +24,10 @@ class DropFilesElement extends HTMLInputElement {
   private container: HTMLDivElement
   private ignoreCallbacks = false
 
+  static get observedAttributes() {
+    return ['label', 'help']
+  }
+
   connectedCallback(): void {
     if (this.ignoreCallbacks) return
     this.ignoreCallbacks = true
@@ -52,10 +56,19 @@ class DropFilesElement extends HTMLInputElement {
     this.container.remove()
   }
 
+  attributeChangedCallback(name: 'label' | 'help', oldValue: string, newValue: string): void {
+    if (name === 'label' && this.container) {
+      this.container.querySelector('.drop-files__explanations strong').innerHTML = newValue
+    }
+    if (name === 'help' && this.container) {
+      this.container.querySelector('.drop-files__explanations em').innerHTML = newValue
+    }
+  }
+
   private getAttributes(): Props {
     return {
       label: this.getAttribute('label') || 'Drop files here or click to upload.',
-      help: this.getAttribute('help') || ' ',
+      help: this.getAttribute('help') || '',
     }
   }
 
@@ -67,7 +80,7 @@ class DropFilesElement extends HTMLInputElement {
     const dom = strToDom(`<div class="drop-files">
       <div class="drop-files__explanations">
             <strong>${label}</strong>
-            ${help ? '<em>' + help + '</em>' : null}
+            <em>${help}</em>
       </div>
       <input type="file" multiple class="drop-files__fake"/>
     </div>`).firstElementChild as HTMLDivElement
