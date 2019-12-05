@@ -4,7 +4,6 @@
   "description": "Customized built-in element to add user interactions on a file input with multiple files as a progressive enhancement.",
   "main": "dist/drop-files-element.js",
   "module": "dist/drop-files-element.js",
-  "type": "module",
   "scripts": {
     "test": "jest",
     "pretty": "prettier --write '**/*.ts'",
