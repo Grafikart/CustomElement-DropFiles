@@ -62,6 +62,12 @@
 </div>
 <script type="text/javascript">
   const $ = document.querySelector.bind(document)
+  const input = $('input[name="files[]"]')
+
+  input.addEventListener('change', function (e) {
+    console.log('change : ', e.target.files)
+  })
+
   $('#move').addEventListener('click', function (e) {
     e.preventDefault()
     $('#b').appendChild($('input[name="files[]"]'))
