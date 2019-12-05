@@ -55,7 +55,7 @@ class DropFilesElement extends HTMLInputElement {
   private getAttributes(): Props {
     return {
       label: this.getAttribute('label') || 'Drop files here or click to upload.',
-      help: this.getAttribute('help') || '',
+      help: this.getAttribute('help') || ' ',
     }
   }
 
@@ -95,6 +95,7 @@ class DropFilesElement extends HTMLInputElement {
    * Event triggered when files changes
    */
   private onFilesUpdate(): void {
+    this.dispatchEvent(new Event('change'))
     if (this.files.length > 0) {
       this.container.classList.add('has-files')
     } else {

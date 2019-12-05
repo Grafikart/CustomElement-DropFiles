@@ -1,5 +1,4 @@
 export function arrayToFileList(files: File[]): FileList {
-  // const data = (new ClipboardEvent('')).clipboardData || new DataTransfer
   const data = new ClipboardEvent('').clipboardData || new DataTransfer()
   files.forEach(file => data.items.add(file))
   return data.files
