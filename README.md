@@ -75,6 +75,14 @@ This component doesn't use shadow dom so you can customize the style using CSS a
 
 ## Changelog
 
+**1.0.7**
+
+- Fixed a rendering bug on Firefox (issue #2)
+
+**1.0.6**
+
+- Fixed a bug happening when no attributes were passed to the component
+
 **1.0.5**
 
 - Fix style when box-sizing is set to border-box 
