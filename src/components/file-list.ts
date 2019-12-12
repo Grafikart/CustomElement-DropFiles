@@ -1,6 +1,6 @@
 import { strToDom } from '../helpers/dom'
 import FileComponent from './file'
-import { diffFiles } from '../helpers/files'
+import { arrayToFileList, diffFiles } from '../helpers/files'
 import { deleteCallback } from '../interfaces'
 import Flip from '../helpers/flip'
 
@@ -46,6 +46,6 @@ export default class FileListComponent {
       this.flip.remove(removeElements)
     }
     this.flip.play(Array.from(this.fileElements.values()))
-    this.oldFiles = fileList
+    this.oldFiles = arrayToFileList(Array.from(fileList)) // Creates a clone instead of a reference, fix #2
   }
 }
