@@ -1,5 +1,5 @@
 import './style.css'
-import { mergeFileLists, removeFile } from './helpers/files'
+import { mergeFileLists, removeFile, arrayToFileList } from './helpers/files'
 import { strToDom } from './helpers/dom'
 import FileListComponent from './components/file-list'
 
@@ -23,9 +23,10 @@ class DropFilesElement extends HTMLInputElement {
   private fileList: FileListComponent
   private container: HTMLDivElement
   private ignoreCallbacks = false
+  private allowMultiple = true
 
   static get observedAttributes() {
-    return ['label', 'help']
+    return ['label', 'help', 'multiple']
   }
 
   connectedCallback(): void {
@@ -56,12 +57,19 @@ class DropFilesElement extends HTMLInputElement {
     this.container.remove()
   }
 
-  attributeChangedCallback(name: 'label' | 'help', oldValue: string, newValue: string): void {
+  attributeChangedCallback(name: 'label' | 'help' | 'multiple', oldValue: string, newValue: string): void {
     if (name === 'label' && this.container) {
       this.container.querySelector('.drop-files__explanations strong').innerHTML = newValue
     }
     if (name === 'help' && this.container) {
       this.container.querySelector('.drop-files__explanations em').innerHTML = newValue
+    }
+    if (name === 'multiple') {
+      this.allowMultiple = newValue !== null
+      if (!this.allowMultiple && this.files.length > 1) {
+        this.files = arrayToFileList([this.files[0]])
+        this.onFilesUpdate()
+      }
     }
   }
 
@@ -100,7 +108,12 @@ class DropFilesElement extends HTMLInputElement {
    * Event triggered when new files are selected
    */
   private onNewFiles(e: ChangeEvent): void {
-    this.files = mergeFileLists(this.files, e.currentTarget.files)
+    if (this.allowMultiple) {
+      this.files = mergeFileLists(this.files, e.currentTarget.files)
+    } else {
+      this.files = arrayToFileList([e.currentTarget.files[0]])
+    }
+    e.currentTarget.files = arrayToFileList([])
     this.onFilesUpdate()
   }
 

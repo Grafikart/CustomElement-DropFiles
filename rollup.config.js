@@ -21,6 +21,6 @@ export default {
     postcss(),
     inlineSvg(),
     dev(),
-    isDev ? livereload() : null
+    // isDev ? livereload() : null
   ],
 }

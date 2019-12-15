@@ -36,8 +36,8 @@ describe('Drop Files', () => {
   it('should not upload files twice', async () => {
     await expect(page).toUploadFile(FAKE_INPUT, filePath('blank.pdf'))
     await expect(page).toUploadFile(FAKE_INPUT, filePath('blank2.pdf'))
+    await expect(page).toUploadFile(FAKE_INPUT, filePath('blank2.pdf'))
     await expect(page).toMatch('blank.pdf')
-    await expect(page).toMatch('blank2.pdf')
     await expect(page).toMatch('blank2.pdf')
     await expect(FILE).toExist(2)
   })
@@ -77,5 +77,16 @@ describe('Drop Files', () => {
       document.querySelector(ORIGINAL_INPUT).setAttribute('help', 'azjejaoze')
     }, ORIGINAL_INPUT)
     await expect(page).toMatch('azjejaoze')
+  })
+
+  it('should handle no multiple attribute', async () => {
+    await page.evaluate(ORIGINAL_INPUT => {
+      document.querySelector(ORIGINAL_INPUT).removeAttribute('multiple')
+    }, ORIGINAL_INPUT)
+    await expect(page).toUploadFile(FAKE_INPUT, filePath('blank.pdf'))
+    await expect(page).toMatch('blank.pdf')
+    await expect(page).toUploadFile(FAKE_INPUT, filePath('blank2.pdf'))
+    await expect(page).toMatch('blank2.pdf')
+    await expect(page).not.toMatch('blank.pdf')
   })
 })

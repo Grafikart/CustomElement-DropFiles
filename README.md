@@ -75,6 +75,10 @@ This component doesn't use shadow dom so you can customize the style using CSS a
 
 ## Changelog
 
+**1.0.8**
+
+- Correctly handle input without the "multiple" attribute (issue #4)
+
 **1.0.7**
 
 - Fixed a rendering bug on Firefox (issue #2)
