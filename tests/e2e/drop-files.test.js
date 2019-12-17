@@ -89,4 +89,23 @@ describe('Drop Files', () => {
     await expect(page).toMatch('blank2.pdf')
     await expect(page).not.toMatch('blank.pdf')
   })
+
+  it('should handle no multiple attribute on start', async () => {
+    await page.evaluate(ORIGINAL_INPUT => {
+      document.querySelector(ORIGINAL_INPUT).removeAttribute('multiple')
+      document.querySelector(ORIGINAL_INPUT).remove()
+      document.body.innerHTML = `<input
+            type="file"
+            name="files[]"
+            label="Drop files here or click to upload."
+            help="Upload files here and they won't be sent immediately"
+            is="drop-files"
+        />`
+    }, ORIGINAL_INPUT)
+    await expect(page).toUploadFile(FAKE_INPUT, filePath('blank.pdf'))
+    await expect(page).toMatch('blank.pdf')
+    await expect(page).toUploadFile(FAKE_INPUT, filePath('blank2.pdf'))
+    await expect(page).toMatch('blank2.pdf')
+    await expect(page).not.toMatch('blank.pdf')
+  })
 })

@@ -32,6 +32,7 @@ class DropFilesElement extends HTMLInputElement {
   connectedCallback(): void {
     if (this.ignoreCallbacks) return
     this.ignoreCallbacks = true
+    this.allowMultiple = !!this.getAttribute('multiple')
     const div = this.render()
     this.fileList = new FileListComponent()
     this.insertAdjacentElement('afterend', div)

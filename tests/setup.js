@@ -11,7 +11,8 @@ global.expect.extend({
       }
     } else {
       return {
-        message: () => `expected ${received} to be present ${times} times on the page`,
+        message: () =>
+          `expected ${received} to be present ${times} times instead of ${elements.length} times on the page`,
         pass: false,
       }
     }
