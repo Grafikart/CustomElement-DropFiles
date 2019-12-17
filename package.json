@@ -1,6 +1,6 @@
 {
   "name": "@grafikart/drop-files-element",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Customized built-in element to add user interactions on a file input with multiple files as a progressive enhancement.",
   "main": "dist/drop-files-element.js",
   "module": "dist/drop-files-element.js",

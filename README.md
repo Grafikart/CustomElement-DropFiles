@@ -75,6 +75,10 @@ This component doesn't use shadow dom so you can customize the style using CSS a
 
 ## Changelog
 
+**1.0.9**
+
+- Fixed the behaviour of a single file input
+
 **1.0.8**
 
 - Correctly handle input without the "multiple" attribute (issue #4)
