@@ -47,11 +47,7 @@ Then use the custom element in your html using `is="drop-files`.
 
 ### Safari
 
-Unfortunately safari doesn't support Custom built-in elements and you have to polyfill this feature at the moment using [@ungap polyfill](https://github.com/ungap/custom-elements-builtin)
-
-```html
-<script src="https://unpkg.com/@ungap/custom-elements-builtin"></script>
-```
+Unfortunately safari doesn't support Custom built-in elements and does not have a constructor for DataTransfer (https://bugs.webkit.org/show_bug.cgi?id=170168) so this custom element won't display (native input will be displayed)
 
 ## Customization
 
