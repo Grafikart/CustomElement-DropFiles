@@ -1,5 +1,6 @@
 import pdf from './pdf.svg'
 import doc from './doc.svg'
+import xls from './xls.svg'
 import { strToDom } from '../helpers/dom'
 
 type IconList = {
@@ -10,6 +11,9 @@ const icons: IconList = {
   doc: doc,
   docx: doc,
   pdf: pdf,
+  xls: xls,
+  xlsx: xls,
+  csv: xls
 }
 
 /*
