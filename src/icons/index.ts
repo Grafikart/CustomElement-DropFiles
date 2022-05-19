@@ -1,6 +1,8 @@
 import pdf from './pdf.svg'
 import doc from './doc.svg'
 import xls from './xls.svg'
+import media from './media.svg'
+import zip from './zip.svg'
 import { strToDom } from '../helpers/dom'
 
 type IconList = {
@@ -10,10 +12,16 @@ type IconList = {
 const icons: IconList = {
   doc: doc,
   docx: doc,
+  txt: doc,
   pdf: pdf,
   xls: xls,
   xlsx: xls,
-  csv: xls
+  csv: xls,
+  mp3: media,
+  mpeg: media,
+  zip: zip,
+  tar: zip,
+  rar: zip
 }
 
 /*
@@ -30,7 +38,7 @@ export function renderExtension(file: File): Element {
   if (icons[ext] !== undefined) {
     return strToDom(icons[ext]).firstChild as Element
   }
-  const img = strToDom(`<img src=""/>`).firstChild as HTMLImageElement
+  const img = strToDom(`<img src="" alt="icone"/>`).firstChild as HTMLImageElement
   const reader = new FileReader()
   reader.addEventListener(
     'load',
